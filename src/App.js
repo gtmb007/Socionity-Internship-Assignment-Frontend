@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SocionityApp from './component/socionity/SocionityApp';
+import SocionityApp from './component/SocionityApp';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

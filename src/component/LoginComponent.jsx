@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import AuthenticationService from './AuthenticationService.js';
 import {Link} from 'react-router-dom';
-import SocionityDataService from './SocionityDataService.js';
+import SocionityDataService from '../api/SocionityDataService.js';
 
 class LoginComponent extends Component {
     constructor(props) {

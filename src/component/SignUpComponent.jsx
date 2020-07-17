@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SocionityDataService from './SocionityDataService.js';
+import SocionityDataService from '../api/SocionityDataService.js';
 
 class SignUpComponent extends Component {
 
