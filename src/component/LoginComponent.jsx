@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import AuthenticationService from './AuthenticationService.js';
 import {Link} from 'react-router-dom';
 import SocionityDataService from '../api/SocionityDataService.js';
+import '../../src/App.css';
+
 
 class LoginComponent extends Component {
     constructor(props) {
@@ -9,46 +11,43 @@ class LoginComponent extends Component {
         this.state = {
             username : '',
             password : '',
-            // hasLoginFailed : false,
-            // showSuccessMesaage : false
+            hasLoginFailed : false
         }
     }
 
+    // componentWillUnmount() {
+    //     this.setState({ hasLoginFailed : false }); 
+    // }
+
+
     handleChange = (event) => {
         this.setState({
+            hasLoginFailed : false,
             [event.target.name] : event.target.value
         });
     }
 
     loginClicked = () => {
-        // try {
-            SocionityDataService.login(this.state.username, this.state.password)
-            .then(
-                () => {
-                    AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password);
-                    this.props.history.push(`/profile/${this.state.username}`);
-                    // this.setState({
-                    //     showSuccessMesaage : true,
-                    //     hasLoginFailed : false
-                    // })
-                })
-        // } catch(e) {
-        //     console.log(e.description);
-        //     this.setState({
-        //         showSuccessMesaage : false,
-        //         hasLoginFailed : true
-        //     })
-        // }
+        SocionityDataService.login(this.state.username, this.state.password)
+        .then(
+            () => {
+                AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password);
+                this.props.history.push(`/profile/${this.state.username}`);
+                this.setState({ hasLoginFailed : false }); 
+            })
+        .catch(
+            err => {
+                this.setState({ hasLoginFailed : true })
+            })
     }
 
     render() {
         return(
-            <div className="container">
-                <div className="LoginComponent" style={{marginTop:"20px"}}>
-                    {/* {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                    {this.state.showSuccessMesaage && <div>Login Successfully</div>} */}
-                    <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChange} style={{borderRadius:"5px"}}/> <br/><br/>
-                    <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} style={{borderRadius:"5px"}}/> <br/><br/>
+            <div className="card">
+                <div className="LoginComponent">
+                    {this.state.hasLoginFailed && <div className="alert alert-warning">Something Went Wrong</div>}
+                    <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChange}/> <br/><br/>
+                    <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange}/> <br/><br/>
                     <button onClick={this.loginClicked} className="btn btn-success">Login</button> <br/><br/>
                     Not Registered? <Link to="/signup">Sign Up</Link>
                 </div>
