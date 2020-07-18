@@ -23,7 +23,7 @@ class PasswordUpdateComponent extends Component {
     updateClicked = () => {
         SocionityDataService.updatePassword(AuthenticationService.getUsername(), {
             password : this.state.password })
-        .then(() => this.props.history.push(`/profile/${this.props.match.params.name}`))
+        .then(() => this.props.history.push(`/profile/${AuthenticationService.getUsername()}`))
         .catch(err => {this.setState({ hasFailed : true })})
     }
 

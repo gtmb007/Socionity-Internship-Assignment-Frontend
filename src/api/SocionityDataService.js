@@ -18,8 +18,8 @@ class SocionityDataService {
         return axios.get(`http://localhost:8060/socionity/user/${username}`);
     }
 
-    updateUsername(username, user) {
-        return axios.put(`http://localhost:8060/socionity/user/name/${username}`, user);
+    updateProfile(username, user) {
+        return axios.put(`http://localhost:8060/socionity/user/profile/${username}`, user);
     }
 
     updatePassword(username, user) {

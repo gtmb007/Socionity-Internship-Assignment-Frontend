@@ -9,7 +9,7 @@ class HeaderComponent extends Component {
         return(
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                    <div><a href="" className="navbar-brand">Socionity</a></div>
+                    <div><a href={`${window.location.href}`} className="navbar-brand">Socionity</a></div>
                     <ul className="navbar-nav">
                         {isUserLoggedIn && <li><Link to={`/profile/${AuthenticationService.getUsername()}`} className="nav-link">Profile</Link></li>}
                     </ul>

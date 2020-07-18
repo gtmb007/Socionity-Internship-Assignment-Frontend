@@ -24,7 +24,7 @@ class SocionityApp extends Component {
                             <Route path="/login/:name"  component={LoginComponent}/>
                             <Route path="/signup"  component={SignUpComponent}/>
                             <AuthenticatedRoute path="/profile/:name" exact component={ProfileComponent}/>
-                            <AuthenticatedRoute path="/profile/updateName/:name" component={ProfileUpdateComponent}/>
+                            <AuthenticatedRoute path="/profile/updateProfile/:name" component={ProfileUpdateComponent}/>
                             <AuthenticatedRoute path="/profile/updatePassword/:name" component={PasswordUpdateComponent}/>
                             <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
                             <Route component={ErrorComponent}/>

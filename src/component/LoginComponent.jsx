@@ -43,6 +43,7 @@ class LoginComponent extends Component {
 
     render() {
         return(
+            <>
             <div className="card">
                 <div className="LoginComponent">
                     {this.state.hasLoginFailed && <div className="alert alert-warning">Something Went Wrong</div>}
@@ -52,6 +53,11 @@ class LoginComponent extends Component {
                     Not Registered? <Link to="/signup">Sign Up</Link>
                 </div>
             </div>
+            {/* <h6>or</h6>
+            <a href={`/profile/${this.state.username}`} className="fa fa-google"></a>
+            <a href={`/profile/${this.state.username}`} className="fa fa-facebook"></a>
+            <a href={`/profile/${this.state.username}`} className="fa fa-twitter"></a> */}
+            </>
         );
     }
 }
